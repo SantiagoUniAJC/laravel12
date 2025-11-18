@@ -62,4 +62,9 @@ class Paciente extends Model
     {
         return $this->hasOne(MotivoConsulta::class);
     }
+
+    public function antecedenteFamiliar()
+    {
+        return $this->hasOne(HC\AntecedenteFamiliar::class);
+    }
 }

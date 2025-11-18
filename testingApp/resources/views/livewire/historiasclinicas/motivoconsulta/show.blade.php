@@ -2,16 +2,25 @@
 
 use Livewire\Volt\Component;
 use App\Models\HistoriaClinica;
+use App\Models\HC\MotivoConsulta;
+use Carbon\Carbon;
 
 new class extends Component {
-    public HistoriaClinica $historia;
+    public $historia;
+    public $item;
 
-    public function mount(HistoriaClinica $historia): void
+    public function mount($historia)
     {
-        $this->historia = $historia;
+        $this->historia = HistoriaClinica::with('paciente')->find($historia);
+
+        $this->item = MotivoConsulta::where(function ($q) {
+            $q->where('historia_clinica_id', $this->historia->id)->orWhere('paciente_id', $this->historia->paciente_id);
+        })->first();
     }
 }; ?>
 
-<div>
-    Estas en la vista de mostrar Motivo de Consulta de: {{ $historia->paciente->nombre_completo }}
-</div>
+@include('livewire.historiasclinicas._show_model', [
+    'item' => $item,
+    'title' =>
+        'Motivo de Consulta: ' . $this->historia->paciente->nombres . ' ' . $this->historia->paciente->apellidos,
+])

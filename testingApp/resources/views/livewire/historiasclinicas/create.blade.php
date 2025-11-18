@@ -69,8 +69,7 @@ new class extends Component {
                     <div class="text-sm text-zinc-700 dark:text-zinc-300">
                         Actualmente este paciente tiene Información. Puedes <a
                             href="#"
-                            class="text-blue-600 hover:underline">ver</a>
-                        o <a href="#" class="text-blue-600 hover:underline">editar</a>
+                            class="text-blue-600 hover:underline">Puedes verla Aqui</a>
                     </div>
                 @else
                     <div class="text-sm text-zinc-500 dark:text-zinc-400">
@@ -140,10 +139,9 @@ new class extends Component {
 
                 @if (!empty($paciente->motivoConsulta) && $paciente->motivoConsulta !== null)
                     <div class="text-sm text-zinc-700 dark:text-zinc-300">
-                        Actualmente este paciente tiene Información. Puedes <a
+                        Actualmente este paciente tiene Información:  <a
                             href="{{ route('historias-clinicas.motivoconsulta.show', ['historia' => $historiaClinica->id]) }}"
-                            class="text-blue-600 hover:underline">ver</a>
-                        o <a href="#" class="text-blue-600 hover:underline">editar</a>
+                            class="text-blue-600 hover:underline">Puedes verla Aqui</a>
                     </div>
                 @else
                     <div class="text-sm text-zinc-500 dark:text-zinc-400">
@@ -237,10 +235,9 @@ new class extends Component {
                 <h3 class="text-zinc-800 dark:text-zinc-100 font-semibold text-lg">Antecedentes Familiares</h3>
                 @if (!empty($paciente->antecedenteFamiliar) && $paciente->antecedenteFamiliar !== null)
                     <div class="text-sm text-zinc-700 dark:text-zinc-300">
-                        Actualmente este paciente tiene Información. Puedes <a
-                            href="{{ route('historias-clinicas.antecedenteFamiliar', ['historia' => $historiaClinica->id]) }}"
-                            class="text-blue-600 hover:underline">ver</a>
-                        o <a href="#" class="text-blue-600 hover:underline">editar</a>
+                        Actualmente este paciente tiene Información: <a
+                            href="{{ route('historias-clinicas.antecedenteFamiliar.show', ['historia' => $historiaClinica->id]) }}"
+                            class="text-blue-600 hover:underline">Puedes verla Aqui</a>
                     </div>
                 @else
                     <div class="text-sm text-zinc-500 dark:text-zinc-400">

@@ -5,7 +5,7 @@
     @include('partials.head')
 </head>
 
-<body class="relative min-h-screen bg-white dark:bg-zinc-800">
+<body class="relative min-h-screen bg-white dark:bg-zinc-800 pb-14">
     {{-- Header --}}
     @include('components.layouts.app.header')
 
@@ -31,15 +31,13 @@
         @endisset
     </flux:main>
 
-
-
     {{-- Footer global --}}
     <footer
         class="fixed bottom-0 left-0 w-full text-xs text-zinc-500 dark:text-zinc-400 text-center py-2 border-t border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 z-50">
+        
         @isset($footer)
             {{ $footer }}
         @else
-            {{-- centrar este titulo --}}
             <p>Sistema Duk Health Panel © {{ date('Y') }}</p>
         @endisset
     </footer>

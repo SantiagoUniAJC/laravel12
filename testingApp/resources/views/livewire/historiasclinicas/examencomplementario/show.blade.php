@@ -2,25 +2,22 @@
 
 use Livewire\Volt\Component;
 use App\Models\HistoriaClinica;
+use App\Models\HC\ExamenComplementario;
 
 new class extends Component {
-    
     public $historia;
-    public $paciente;
+    public $item;
 
-    
     public function mount($historia)
     {
         $this->historia = HistoriaClinica::with('paciente')->find($historia);
 
-        $this->infoLaboralActual = $this->historia->paciente->infoLaboralActual;
-        
-        $this->paciente = $this->historia->paciente;
+        $this->item = ExamenComplementario::where(function($q){
+            $q->where('historia_clinica_id', $this->historia->id)
+              ->orWhere('paciente_id', $this->historia->paciente_id);
+        })->first();
     }
-    
+
 }; ?>
 
-<div>
-    Estas en informacion laboral actual del paciente:
-    <span class="font-semibold text-red-600">{{ $paciente->nombreCompleto }}</span>
-</div>
+@include('livewire.historiasclinicas._show_model', ['item' => $item, 'title' => 'Exámenes Complementarios'])
